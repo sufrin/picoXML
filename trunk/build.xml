@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!-- 
+        $Id: build.xml,v 1.4 2005/03/15 18:47:41 sufrin Exp $ 
+-->
+<project        name    ="picoxml" 
+                default ="build">
+
+
+        <property name="BUILD"        value="BUILD"/>
+        <property name="JAVA"         value="java"/>
+        <property name="HOME"         value="${user.home}"/>
+
+        <target name    = "build" 
+                depends = "compile,jar"/>
+                                  
+        <target name = "compile">
+            <depend srcdir ="${JAVA}" 
+                    destdir="${BUILD}"
+                    cache  ="${BUILD}/dependencies"
+                    closure= "true"/>
+            <javac srcdir    = "${JAVA}" 
+                   debug     = "true"
+                   debuglevel= "lines,vars,source"
+                   classpath = "${CLASSPATH}"
+                   destdir   = "${BUILD}"
+                   > 
+               <include name="**/*.java"/>
+            </javac> 
+        </target>
+
+        <target name = "jar" depends="compile">
+            <jar    basedir  ="${BUILD}" 
+                    destfile ="${BUILD}/picoxml.jar"
+                    includes = "**/*.class"
+                    >                    
+               <manifest>
+                 <attribute name="Main-Class" value="org.sufrin.picoxml.App"/>
+               </manifest>               
+           </jar>
+        </target>
+        
+         <target name ="clean" >
+                  <delete dir="${BUILD}"/>
+                  <!--
+                    <fileset dir="." includes="**/*.class"/>
+                    <fileset dir="." includes="**/*.jar"/>
+                  </delete>  
+                  -->
+        </target>
+</project>
+
+
+
+
+
+
+
+
+
+
+
+
