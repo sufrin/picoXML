@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!-- 
-        $Id: build.xml,v 1.4 2005/03/15 18:47:41 sufrin Exp $ 
+        $Id$ 
 -->
 <project        name    ="picoxml" 
                 default ="build">
